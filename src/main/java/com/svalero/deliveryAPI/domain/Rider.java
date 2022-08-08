@@ -31,10 +31,13 @@ public class Rider {
     @NotEmpty
     private String name;
     @Column
+    @NotEmpty
     private String surname;
     @Column
+    @NotEmpty
     private String vehicle;
     @Column
+    @NotEmpty
     private int maxSpeed;
 
     @OneToMany(mappedBy = "rider")
