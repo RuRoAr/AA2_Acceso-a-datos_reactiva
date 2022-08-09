@@ -1,0 +1,57 @@
+2022-03-14 21:32:59,744 INFO org.springframework.boot.StartupInfoLogger [main] Starting DeliveryApiApplication using Java 11.0.11 on DESKTOP-7VUUI6T with PID 4052 (C:\Users\Rayben\Desktop\deliveryAPI\target\classes started by Rayben in C:\Users\Rayben\Desktop\deliveryAPI)
+2022-03-14 21:32:59,748 INFO org.springframework.boot.SpringApplication [main] No active profile set, falling back to 1 default profile: "default"
+2022-03-14 21:33:00,588 INFO org.springframework.data.repository.config.RepositoryConfigurationDelegate [main] Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2022-03-14 21:33:00,686 INFO org.springframework.data.repository.config.RepositoryConfigurationDelegate [main] Finished Spring Data repository scanning in 83 ms. Found 4 JPA repository interfaces.
+2022-03-14 21:33:01,524 INFO org.springframework.boot.web.embedded.tomcat.TomcatWebServer [main] Tomcat initialized with port(s): 8080 (http)
+2022-03-14 21:33:01,539 INFO org.apache.juli.logging.DirectJDKLog [main] Initializing ProtocolHandler ["http-nio-8080"]
+2022-03-14 21:33:01,540 INFO org.apache.juli.logging.DirectJDKLog [main] Starting service [Tomcat]
+2022-03-14 21:33:01,540 INFO org.apache.juli.logging.DirectJDKLog [main] Starting Servlet engine: [Apache Tomcat/9.0.58]
+2022-03-14 21:33:01,667 INFO org.apache.juli.logging.DirectJDKLog [main] Initializing Spring embedded WebApplicationContext
+2022-03-14 21:33:01,668 INFO org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext [main] Root WebApplicationContext: initialization completed in 1866 ms
+2022-03-14 21:33:01,701 INFO com.zaxxer.hikari.HikariDataSource [main] HikariPool-1 - Starting...
+2022-03-14 21:33:01,896 INFO com.zaxxer.hikari.HikariDataSource [main] HikariPool-1 - Start completed.
+2022-03-14 21:33:01,908 INFO org.springframework.boot.autoconfigure.h2.H2ConsoleAutoConfiguration [main] H2 console available at '/h2-console'. Database available at 'jdbc:h2:file:./restaurant.db'
+2022-03-14 21:33:02,074 INFO org.hibernate.jpa.internal.util.LogHelper [main] HHH000204: Processing PersistenceUnitInfo [name: default]
+2022-03-14 21:33:02,137 INFO org.hibernate.Version [main] HHH000412: Hibernate ORM core version 5.6.5.Final
+2022-03-14 21:33:02,297 INFO org.hibernate.annotations.common.reflection.java.JavaReflectionManager [main] HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2022-03-14 21:33:02,413 INFO org.hibernate.dialect.Dialect [main] HHH000400: Using dialect: org.hibernate.dialect.H2Dialect
+2022-03-14 21:33:03,130 INFO org.hibernate.engine.transaction.jta.platform.internal.JtaPlatformInitiator [main] HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2022-03-14 21:33:03,140 INFO org.springframework.orm.jpa.AbstractEntityManagerFactoryBean [main] Initialized JPA EntityManagerFactory for persistence unit 'default'
+2022-03-14 21:33:03,534 WARN org.springframework.boot.autoconfigure.orm.jpa.JpaBaseConfiguration$JpaWebConfiguration [main] spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2022-03-14 21:33:03,844 INFO org.apache.juli.logging.DirectJDKLog [main] Starting ProtocolHandler ["http-nio-8080"]
+2022-03-14 21:33:03,886 INFO org.springframework.boot.web.embedded.tomcat.TomcatWebServer [main] Tomcat started on port(s): 8080 (http) with context path ''
+2022-03-14 21:33:03,897 INFO org.springframework.boot.StartupInfoLogger [main] Started DeliveryApiApplication in 4.628 seconds (JVM running for 5.344)
+2022-03-14 21:34:42,042 INFO org.apache.juli.logging.DirectJDKLog [http-nio-8080-exec-2] Initializing Spring DispatcherServlet 'dispatcherServlet'
+2022-03-14 21:34:42,042 INFO org.springframework.web.servlet.FrameworkServlet [http-nio-8080-exec-2] Initializing Servlet 'dispatcherServlet'
+2022-03-14 21:34:42,043 INFO org.springframework.web.servlet.FrameworkServlet [http-nio-8080-exec-2] Completed initialization in 1 ms
+2022-03-14 21:34:42,116 INFO com.svalero.deliveryAPI.controller.RiderController [http-nio-8080-exec-2] Find rider by id: 1
+2022-03-14 21:34:42,166 INFO com.svalero.deliveryAPI.controller.RiderController [http-nio-8080-exec-2] Ciclista not found
+2022-03-14 21:34:48,456 INFO com.svalero.deliveryAPI.controller.RiderController [http-nio-8080-exec-3] Find Riders 
+2022-03-14 21:34:48,582 INFO com.svalero.deliveryAPI.controller.RiderController [http-nio-8080-exec-3] End Find Riders 
+2022-03-14 21:34:56,603 INFO com.svalero.deliveryAPI.controller.RiderController [http-nio-8080-exec-4] Find rider by id: 97
+2022-03-14 21:35:34,278 INFO com.svalero.deliveryAPI.controller.RiderController [http-nio-8080-exec-6] Find rider by id: 97
+2022-03-14 21:35:41,538 INFO com.svalero.deliveryAPI.controller.RiderController [http-nio-8080-exec-8] Find rider by id: 1
+2022-03-14 21:35:41,540 INFO com.svalero.deliveryAPI.controller.RiderController [http-nio-8080-exec-8] Ciclista not found
+2022-03-14 21:35:45,350 INFO com.svalero.deliveryAPI.controller.RiderController [http-nio-8080-exec-9] Find rider by id: 1
+2022-03-14 21:35:45,353 INFO com.svalero.deliveryAPI.controller.RiderController [http-nio-8080-exec-9] Ciclista not found
+2022-03-14 21:36:02,297 INFO com.svalero.deliveryAPI.controller.RiderController [http-nio-8080-exec-10] Find Riders 
+2022-03-14 21:36:02,299 INFO com.svalero.deliveryAPI.controller.RiderController [http-nio-8080-exec-10] End Find Riders 
+2022-03-14 21:36:16,132 INFO com.svalero.deliveryAPI.controller.RiderController [http-nio-8080-exec-1] Find rider by id: 97
+2022-03-14 21:38:32,260 INFO com.svalero.deliveryAPI.controller.RiderController [http-nio-8080-exec-3] Find rider by id: 97
+2022-03-14 21:38:37,831 INFO com.svalero.deliveryAPI.controller.RiderController [http-nio-8080-exec-5] Find rider by id: 1
+2022-03-14 21:38:37,833 INFO com.svalero.deliveryAPI.controller.RiderController [http-nio-8080-exec-5] Ciclista not found
+2022-03-14 21:38:46,105 INFO com.svalero.deliveryAPI.controller.RiderController [http-nio-8080-exec-6] Add rider 
+2022-03-14 21:38:46,142 INFO com.svalero.deliveryAPI.controller.RiderController [http-nio-8080-exec-6] End Add rider 
+2022-03-14 21:38:47,433 INFO com.svalero.deliveryAPI.controller.RiderController [http-nio-8080-exec-7] Add rider 
+2022-03-14 21:38:47,436 INFO com.svalero.deliveryAPI.controller.RiderController [http-nio-8080-exec-7] End Add rider 
+2022-03-14 21:38:48,144 INFO com.svalero.deliveryAPI.controller.RiderController [http-nio-8080-exec-8] Add rider 
+2022-03-14 21:38:48,146 INFO com.svalero.deliveryAPI.controller.RiderController [http-nio-8080-exec-8] End Add rider 
+2022-03-14 21:38:48,584 INFO com.svalero.deliveryAPI.controller.RiderController [http-nio-8080-exec-9] Add rider 
+2022-03-14 21:38:48,586 INFO com.svalero.deliveryAPI.controller.RiderController [http-nio-8080-exec-9] End Add rider 
+2022-03-14 21:38:57,967 INFO com.svalero.deliveryAPI.controller.RiderController [http-nio-8080-exec-10] Find rider by id: 161
+2022-03-14 21:51:50,958 INFO com.svalero.deliveryAPI.controller.RiderController [http-nio-8080-exec-2] Find Riders 
+2022-03-14 21:51:50,966 INFO com.svalero.deliveryAPI.controller.RiderController [http-nio-8080-exec-2] End Find Riders 
+2022-03-14 21:52:24,145 WARN org.springframework.web.servlet.handler.AbstractHandlerExceptionResolver [http-nio-8080-exec-3] Resolved [org.springframework.web.HttpRequestMethodNotSupportedException: Request method 'PATCH' not supported]
+2022-03-14 21:54:25,860 WARN org.springframework.web.servlet.handler.AbstractHandlerExceptionResolver [http-nio-8080-exec-6] Resolved [org.springframework.web.HttpRequestMethodNotSupportedException: Request method 'PATCH' not supported]
+2022-03-14 21:57:37,486 WARN org.springframework.web.servlet.handler.AbstractHandlerExceptionResolver [http-nio-8080-exec-9] Resolved [org.springframework.web.HttpRequestMethodNotSupportedException: Request method 'PATCH' not supported]
+2022-03-14 22:00:17,058 WARN org.springframework.web.servlet.handler.AbstractHandlerExceptionResolver [http-nio-8080-exec-2] Resolved [org.springframework.web.HttpRequestMethodNotSupportedException: Request method 'PATCH' not supported]

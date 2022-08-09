@@ -1,0 +1,833 @@
+{
+	"info": {
+		"_postman_id": "cb559d0d-0848-416a-b75e-95f10bcfd9c9",
+		"name": "DeliveryAPI",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Restaurant",
+			"item": [
+				{
+					"name": "All Restaurantes",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/restaurants",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"restaurants"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "A Restaurant for Id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/restaurant/2",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"restaurant",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "A Restaurant for category",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/restaurant?category=mexicano",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"restaurant"
+							],
+							"query": [
+								{
+									"key": "category",
+									"value": "mexicano"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Add Restaurant",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \" tibett\",\r\n    \"address\": \"paseo\",\r\n    \"capacity\": 10,\r\n    \"operative\": true,\r\n    \"mediumPrice\": 50.0,\r\n    \"category\": \"india\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/restaurants",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"restaurants"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Modify Restaurant",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \r\n    \"name\": \" tibett\",\r\n    \"address\": \"paseo\",\r\n    \"capacity\": 10,\r\n    \"operative\": true,\r\n    \"mediumPrice\": 50.0,\r\n    \"category\": \" tailiandesa\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/restaurant/2",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"restaurant",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Restaurant",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/restaurant/3",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"restaurant",
+								"3"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Modify restaurant only operative",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "false",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/order/1",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"order",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Order",
+			"item": [
+				{
+					"name": "A Order by id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/order/129",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"order",
+								"129"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "A Order by distance",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/order?distance=200",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"order"
+							],
+							"query": [
+								{
+									"key": "distance",
+									"value": "200"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "All orders",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/orders",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"orders"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Add order",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \r\n    \"price\": 21,\r\n    \"weight\": 5.0,\r\n    \"ready\": true,\r\n    \"time\": 20,\r\n    \"distance\": 200\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/orders",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"orders"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Modify order",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "   {\r\n        \r\n        \"price\": 21,\r\n        \"weight\": 5.0,\r\n        \"ready\": true,\r\n        \"time\": 20,\r\n        \"distance\": 20000\r\n    }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/order/66",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"order",
+								"66"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Order",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "   {\r\n        \r\n        \"price\": 21,\r\n        \"weight\": 5.0,\r\n        \"ready\": true,\r\n        \"time\": 20,\r\n        \"distance\": 20000\r\n    }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/order/104",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"order",
+								"104"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "A Order Dto new order",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"price\": 21,\r\n    \"weight\": 5.0,\r\n    \"ready\": true,\r\n    \"time\": 40,\r\n    \"distance\": 20,\r\n    \"restaurant\": 2,\r\n    \"user\": 1,\r\n    \"rider\": 97\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/orders",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"orders"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Modify order only ready",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "false",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/order/1",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"order",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Rider",
+			"item": [
+				{
+					"name": "A Rider by id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/rider/97",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"rider",
+								"97"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "A Order by vehicle",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/rider?vehicle=bike",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"rider"
+							],
+							"query": [
+								{
+									"key": "vehicle",
+									"value": "bike"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "All riders",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/riders",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"riders"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "query num Orders Rider",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/user/97/numOrders",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"user",
+								"97",
+								"numOrders"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Add rider",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \r\n    \"dni\": \"72548966-P\",\r\n    \"name\": \"lidia\",\r\n    \"surname\": \"gomez\",\r\n    \"vehicle\": \"bike\",\r\n    \"maxSpeed\": 50\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/riders",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"riders"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Modify rider",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \r\n    \"dni\": \"72548966-P\",\r\n    \"name\": \"alex\",\r\n    \"surname\": \"gomez\",\r\n    \"vehicle\": \"bikeee\",\r\n    \"maxSpeed\": 50\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/rider/97",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"rider",
+								"97"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Modify rider only name",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "lidiaaaaa",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/rider/161",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"rider",
+								"161"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Rider",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "   {\r\n        \r\n        \"price\": 21,\r\n        \"weight\": 5.0,\r\n        \"ready\": true,\r\n        \"time\": 20,\r\n        \"distance\": 20000\r\n    }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/rider/1",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"rider",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Rider",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "   {\r\n        \r\n        \"price\": 21,\r\n        \"weight\": 5.0,\r\n        \"ready\": true,\r\n        \"time\": 20,\r\n        \"distance\": 20000\r\n    }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/rider/97/orders",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"rider",
+								"97",
+								"orders"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Rider by id and distance by order",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "   {\r\n        \r\n        \"price\": 21,\r\n        \"weight\": 5.0,\r\n        \"ready\": true,\r\n        \"time\": 20,\r\n        \"distance\": 20000\r\n    }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/rider/97/orders?distance=200",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"rider",
+								"97",
+								"orders"
+							],
+							"query": [
+								{
+									"key": "distance",
+									"value": "200"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "User",
+			"item": [
+				{
+					"name": "A Rider by id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/user/1",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"user",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "A Order by surname",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/user?surname=gomez",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"user"
+							],
+							"query": [
+								{
+									"key": "surname",
+									"value": "gomez"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "All users",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/users",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"users"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Add user",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "   {\r\n        \r\n        \"dni\": \"784563221-L\",\r\n        \"name\": \"alex\",\r\n        \"surname\": \"gomez\",\r\n        \"birthDate\": \"2000-02-01\",\r\n        \"address\": \"calle lorenzo\"\r\n    }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/users",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"users"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Modify user",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "   {\r\n    \r\n        \"dni\": \"784563221-L\",\r\n        \"name\": \"alexxxx\",\r\n        \"surname\": \"gomez\",\r\n        \"birthDate\": \"2000-02-01\",\r\n        \"address\": \"calle lorenzo\"\r\n    }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/user/99",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"user",
+								"99"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete User",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "   {\r\n        \r\n        \"price\": 21,\r\n        \"weight\": 5.0,\r\n        \"ready\": true,\r\n        \"time\": 20,\r\n        \"distance\": 20000\r\n    }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/user/99",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"user",
+								"99"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Modify user only address",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "calle la paz",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/user/1",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"user",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}

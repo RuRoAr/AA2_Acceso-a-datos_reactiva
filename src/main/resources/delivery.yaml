@@ -1,0 +1,1151 @@
+openapi: 3.0.2
+servers:
+  - url: /delivery
+info:
+  description: Esta es la API que vamos a crear en clase
+  version: "1.0"
+  title: Delivery API
+tags:
+  - name: orders
+    description: Operaciones para realizar las comandas
+  - name: restaurants
+    description: Operaciones para los restaurantes
+  - name: users
+    description: Gestión de usuarios
+  - name: riders
+    description: Gestión de riders
+paths:
+  /orders:
+    get:
+      tags: 
+        - orders 
+      summary: Listado de orders
+      description: Devuelve el listado completo de todas los pedidos registradas. Es posible filtrar por la distancia del pedido
+      operationId: getOrders
+      parameters:
+        - name: distance
+          in: query
+          description: Dsitancia de que se encuentra entre el punto de entrga y el restaurante
+          required: false
+          schema:
+            type: number
+            format: int32
+            default: 500
+      responses:
+        '200':
+          description: Ok
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Order'
+        '500':
+          description: Error interno del servidor
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InternalServerError'
+        '404':
+          description: No se ha encontrado la comanda
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResourceNotFound'
+              example:
+                internalError: 1
+                message: "No se ha podido encontrar la order"
+                
+    post:
+      tags:
+        - orders
+      summary: Registrar una order
+      description: Registra una nueva order en el sistema
+      operationId: postOrders
+      requestBody:
+        description: Los datos de la nueva order
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/OrderIn'
+      responses:
+        '201':
+          description: Se ha registrado la order
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Order'
+        '500':
+          description: Error interno del servidor
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InternalServerError'
+        
+  /order/{orderId}:
+    get:
+      tags: 
+        - orders
+      summary: Obtiene los datos de una order
+      description: Devuelve los datos de una order determinada
+      operationId: getOrder
+      parameters:
+        - name: orderId
+          in: path
+          description: Identificador de la order
+          required: true
+          schema:
+            type: number
+            format: int64
+            example: 1
+      responses:
+        '200':
+          description: Ok
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Order'
+        '500':
+          description: Error interno del servidor
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InternalServerError'
+        '404':
+          description: No se ha encontrado la order
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResourceNotFound'
+              example:
+                internalError: 1
+                message: "No se ha podido encontrar la order"
+    delete:
+      tags: 
+        - orders
+      summary: Da de baja una order
+      description: Da de baja una order determinada
+      operationId: deleteOrder
+      parameters:
+        - name: orderId
+          in: path
+          description: Identificador de la order
+          required: true
+          schema:
+            type: number
+            format: int64
+            example: 23
+      responses:
+        '200':
+          description: Ok
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Order'
+        '500':
+          description: Error interno del servidor
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InternalServerError'
+        '404':
+          description: No se ha encontrado la comanda
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResourceNotFound'
+              example:
+                internalError: 1
+                message: "No se ha podido encontrar la order"
+    put:
+      tags: 
+        - orders
+      summary: Modifica una order
+      description: Modifica los datos de una order determinada
+      operationId: modifyOrder
+      parameters:
+        - name: orderId
+          in: path
+          description: Identificador de la order que se va a modificar
+          required: true
+          schema:
+            type: number
+            format: int64
+            example: 23
+      requestBody:
+        description: Los datos nuevos de la order
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/OrderIn'
+      responses:
+        '500':
+          description: Error interno del servidor
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InternalServerError'
+        '200':
+          description: Ok
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Order'
+        '404':
+          description: No se ha encontrado la order
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResourceNotFound'
+              example:
+                internalError: 1
+                message: "No se ha podido encontrar la order"
+                
+                
+    patch:
+      tags: 
+        - orders
+      summary: Modifica el estado de un pedido
+      description: Modifica el estado de un pedido, en el caso de que este listo
+      operationId: patchOrder
+      parameters:
+        - name: orderId
+          in: path
+          description: boolean que se mandadara en caso de que este listo
+          required: true
+          schema:
+            type: boolean
+            format: int64
+            example: 23
+      requestBody:
+        description: Los datos nuevos de la order
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/OrderIn'
+      responses:
+        '500':
+          description: Error interno del servidor
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InternalServerError'
+        '200':
+          description: Ok
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Order'
+        '404':
+          description: No se ha encontrado la order
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResourceNotFound'
+              example:
+                internalError: 1
+                message: "No se ha podido encontrar la order"
+                      
+                
+                
+  /bike/{bikeId}/routes:
+    get:
+      tags: 
+        - orders
+      summary: Obtiene las rutas que ha realizado una bicicleta
+      description: Obtiene la información de las rutas realizadas por una bicicleta determinada. Es posible filtrar por la distancia recorrida en la ruta
+      operationId: getBikeRoutes
+      parameters:
+        - name: bikeId
+          in: path
+          description: Identificador de la bicicleta
+          required: true
+          schema:
+            type: number
+            format: int64
+            example: 23
+        - name: distance
+          in: query
+          description: Longitud de las rutas que se quieren obtener
+          required: false
+          schema:
+            type: number
+            format: int32
+            default: 0
+      responses:
+        '200':
+          description: Ok
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/RouteDTO'
+        '404':
+          description: No se ha encontrado la bicicleta
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResourceNotFound'
+              example:
+                internalError: 1
+                message: "No se ha podido encontrar la bicicleta"
+                
+                
+                
+                
+  /restaurants:
+     get:
+      tags: 
+        - restaurants
+      summary: Listado de restaurants
+      description: Devuelve el listado completo de todas los restaurantes registrados. Es posible filtrar por la categoria del pedido
+      operationId: getRestaruants
+      parameters:
+        - name: category
+          in: query
+          description: Dsitancia de que se encuentra entre el punto de entrga y el restaurante
+          required: false
+          schema:
+            type: string
+            default: "Mexicano"
+      responses:
+        '200':
+          description: Ok
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Restaurant'
+        '500':
+          description: Error interno del servidor
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InternalServerError'
+        '404':
+          description: No se ha encontrado restaurante con esa categoria
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResourceNotFound'
+              example:
+                internalError: 1
+                message: "No se ha podido encontrar el restaurante"
+     post:
+      tags:
+        - restaurants
+      summary: Registrar un restaurante
+      description: Registra un nuevo restaurante
+      operationId: postRestaurnat
+      requestBody:
+        description: Los datos de un nuevo resaturante
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RestaurantIn'
+      responses:
+        '201':
+          description: Se ha registrado el restaurnate
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Restaurant'
+        '500':
+          description: Error interno del servidor
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InternalServerError'
+                
+  /restaruant/{restaurantId}:
+    get:
+      tags: 
+        - restaurants
+      summary: Obtiene los datos de un restaurante
+      description: Devuelve los datos de un restaurante determinado
+      operationId: getRestaurnat
+      parameters:
+        - name: restaurantId
+          in: path
+          description: Identificador del restaurante
+          required: true
+          schema:
+            type: number
+            format: int64
+            example: 1
+      responses:
+        '200':
+          description: Ok
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Restaurant'
+        '500':
+          description: Error interno del servidor
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InternalServerError'
+        '404':
+          description: No se ha encontrado el restuarante
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResourceNotFound'
+              example:
+                internalError: 1
+                message: "No se ha podido encontrar el restaurante"
+    delete:
+      tags: 
+        - restaurants
+      summary: Da de baja un restaurante
+      description: Da de baja un restaurante determinado
+      operationId: deleteRestaurant
+      parameters:
+        - name: restaurantId
+          in: path
+          description: Identificador del restaurnate
+          required: true
+          schema:
+            type: number
+            format: int64
+            example: 23
+      responses:
+        '200':
+          description: Ok
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Restaurant'
+        '500':
+          description: Error interno del servidor
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InternalServerError'
+        '404':
+          description: No se ha encontrado el restaurante
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResourceNotFound'
+              example:
+                internalError: 1
+                message: "No se ha podido encontrar el restaurante"
+    put:
+      tags: 
+        - restaurants
+      summary: Modifica un restaurante
+      description: Modifica los datos de un restaurante determinado
+      operationId: modifyRestaurant
+      parameters:
+        - name: restaurantId
+          in: path
+          description: Identificador del restaurante que se va a modificar
+          required: true
+          schema:
+            type: number
+            format: int64
+            example: 23
+      requestBody:
+        description: Los datos nuevos del restaurante
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RestaurantIn'
+      responses:
+        '500':
+          description: Error interno del servidor
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InternalServerError'
+        '200':
+          description: Ok
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Order'
+        '404':
+          description: No se ha encontrado el restaurante
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResourceNotFound'
+              example:
+                internalError: 1
+                message: "No se ha podido encontrar el restaurante"
+                
+                
+    patch:
+      tags: 
+        - restaurants
+      summary: Modifica el estado de un restaurante
+      description: Modifica el estado del restaurante si esta abierto o cerrado
+      operationId: patchRestaurnat
+      parameters:
+        - name: restaurantId
+          in: path
+          description: boolean que dependera del estado del local
+          required: true
+          schema:
+            type: boolean
+            format: int64
+            example: 23
+      requestBody:
+        description: Los datos nuevos del estado del local
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RestaurantIn'
+      responses:
+        '500':
+          description: Error interno del servidor
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InternalServerError'
+        '200':
+          description: Ok
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Restaurant'
+        '404':
+          description: No se ha encontrado el restaurante
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResourceNotFound'
+              example:
+                internalError: 1
+                message: "No se ha podido encontrar el restaurante"
+  /users:
+     get:
+      tags: 
+        - users
+      summary: Listado de usuarios
+      description: Devuelve el listado completo de todas los usuarios registrados. Es posible filtrar por el apellido del usuario
+      operationId: getUsers
+      parameters:
+        - name: surname
+          in: query
+          description: apellido del usuario a filtrar
+          required: false
+          schema:
+            type: string
+            default: "Lopez"
+      responses:
+        '200':
+          description: Ok
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/User'
+        '500':
+          description: Error interno del servidor
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InternalServerError'
+        '404':
+          description: No se ha encontrado usuario con ese apellido
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResourceNotFound'
+              example:
+                internalError: 1
+                message: "No se ha podido encontrar el usuario"
+     post:
+      tags:
+        - users
+      summary: Registrar un users
+      description: Registra un nuevo usuario
+      operationId: postUser
+      requestBody:
+        description: Los datos de un nuevo usuario
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UserIn'
+      responses:
+        '201':
+          description: Se ha registrado el usuario
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+        '500':
+          description: Error interno del servidor
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InternalServerError'
+                               
+  /user/{userId}:
+    get:
+      tags: 
+        - users
+      summary: Obtiene los datos de los usuarios
+      description: Devuelve los datos de un usuario determinado
+      operationId: getUser
+      parameters:
+        - name: userId
+          in: path
+          description: Identificador del usuario
+          required: true
+          schema:
+            type: number
+            format: int64
+            example: 1
+      responses:
+        '200':
+          description: Ok
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+        '500':
+          description: Error interno del servidor
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InternalServerError'
+        '404':
+          description: No se ha encontrado el usuario
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResourceNotFound'
+              example:
+                internalError: 1
+                message: "No se ha podido encontrar el usuario"
+    delete:
+      tags: 
+        - users
+      summary: Da de baja un usuario
+      description: Da de baja un usuario determinado
+      operationId: deleteUser
+      parameters:
+        - name: userId
+          in: path
+          description: Identificador del usuario
+          required: true
+          schema:
+            type: number
+            format: int64
+            example: 23
+      responses:
+        '200':
+          description: Ok
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+        '500':
+          description: Error interno del servidor
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InternalServerError'
+        '404':
+          description: No se ha encontrado el usuario
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResourceNotFound'
+              example:
+                internalError: 1
+                message: "No se ha podido encontrar el usuario"
+    put:
+      tags: 
+        - users
+      summary: Modifica un usuario
+      description: Modifica los datos de un usuario determinado
+      operationId: userRestaurant
+      parameters:
+        - name: userId
+          in: path
+          description: Identificador del usuario que se va a modificar
+          required: true
+          schema:
+            type: number
+            format: int64
+            example: 23
+      requestBody:
+        description: Los datos nuevos del usuario
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UserIn'
+      responses:
+        '500':
+          description: Error interno del servidor
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InternalServerError'
+        '200':
+          description: Ok
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+        '404':
+          description: No se ha encontrado el usuario
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResourceNotFound'
+              example:
+                internalError: 1
+                message: "No se ha podido encontrar el usuario"
+                
+                
+    patch:
+      tags: 
+        - users
+      summary: Modifica el estado de un usuario
+      description: Modifica la direccion del usuario
+      operationId: patchUser
+      parameters:
+        - name: userId
+          in: path
+          description: string que cambia la direccion del usuario
+          required: true
+          schema:
+            type: string
+            example: "calle la paz n8"
+      requestBody:
+        description: Los datos nuevos del usuario
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UserIn'
+      responses:
+        '500':
+          description: Error interno del servidor
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InternalServerError'
+        '200':
+          description: Ok
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+        '404':
+          description: No se ha encontrado el restaurante
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResourceNotFound'
+              example:
+                internalError: 1
+                message: "No se ha podido encontrar el usuario"
+  /riders:
+    get:
+      tags: 
+        - riders
+      summary: Listado de riders
+      description: Devuelve el listado completo de todas los riders registrados. Es posible filtrar por el vehoculo del rider
+      operationId: getRiders
+      parameters:
+        - name: vehicle
+          in: query
+          description: vehiculo en la que viaja el rider
+          required: false
+          schema:
+            type: string
+            default: "moto"
+      responses:
+        '200':
+          description: Ok
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Rider'
+        '500':
+          description: Error interno del servidor
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InternalServerError'
+        '404':
+          description: No se ha encontrado un rider con ese vehiculo
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResourceNotFound'
+              example:
+                internalError: 1
+                message: "No se ha podido encontrar el rider"
+    post:
+      tags:
+        - riders
+      summary: Registrar un rider
+      description: Registra un nuevo rider
+      operationId: postRider
+      requestBody:
+        description: Los datos de un nuevo rider
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RiderIn'
+      responses:
+        '201':
+          description: Se ha registrado el rider
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Rider'
+        '500':
+          description: Error interno del servidor
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InternalServerError'
+                
+  /rider/{riderId}:
+    get:
+      tags: 
+        - riders
+      summary: Obtiene los datos de un rider
+      description: Devuelve los datos de un rider determinado
+      operationId: getRider
+      parameters:
+        - name: riderId
+          in: path
+          description: Identificador del rider
+          required: true
+          schema:
+            type: number
+            format: int64
+            example: 1
+      responses:
+        '200':
+          description: Ok
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Rider'
+        '500':
+          description: Error interno del servidor
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InternalServerError'
+        '404':
+          description: No se ha encontrado el rider
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResourceNotFound'
+              example:
+                internalError: 1
+                message: "No se ha podido encontrar el rider"
+    delete:
+      tags: 
+        - riders
+      summary: Da de baja un restaurante
+      description: Da de baja un restaurante determinado
+      operationId: deleteRider
+      parameters:
+        - name: riderId
+          in: path
+          description: Identificador del rider
+          required: true
+          schema:
+            type: number
+            format: int64
+            example: 23
+      responses:
+        '200':
+          description: Ok
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Rider'
+        '500':
+          description: Error interno del servidor
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InternalServerError'
+        '404':
+          description: No se ha encontrado el rider
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResourceNotFound'
+              example:
+                internalError: 1
+                message: "No se ha podido encontrar el rider"
+    put:
+      tags: 
+        - riders
+      summary: Modifica un rider
+      description: Modifica los datos de un rider determinado
+      operationId: modifyRider
+      parameters:
+        - name: riderId
+          in: path
+          description: Identificador del rider que se va a modificar
+          required: true
+          schema:
+            type: number
+            format: int64
+            example: 23
+      requestBody:
+        description: Los datos nuevos del rider
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RiderIn'
+      responses:
+        '500':
+          description: Error interno del servidor
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InternalServerError'
+        '200':
+          description: Ok
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Rider'
+        '404':
+          description: No se ha encontrado el rider
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResourceNotFound'
+              example:
+                internalError: 1
+                message: "No se ha podido encontrar el rider"
+                
+                
+    patch:
+      tags: 
+        - riders
+      summary: Modifica el nombre del rider
+      description: Modifica el nombre del rider
+      operationId: patchRider
+      parameters:
+        - name: riderId
+          in: path
+          description: string que cambia el nombre del rider
+          required: true
+          schema:
+            type: string
+            example: "Daniel"
+      requestBody:
+        description: Los datos nuevos del rider
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RiderIn'
+      responses:
+        '500':
+          description: Error interno del servidor
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InternalServerError'
+        '200':
+          description: Ok
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Rider'
+        '404':
+          description: No se ha encontrado el rider
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResourceNotFound'
+              example:
+                internalError: 1
+                message: "No se ha podido encontrar el rider"
+                
+                
+                
+                
+                
+                
+                
+
+components:
+  schemas:
+    OrderIn:
+      properties:
+        price:
+          type: number
+          format: int64
+          example: 20.5
+        weight:
+          type: number
+          format: double
+          example: 50.5
+        ready:
+          type: boolean
+          example: false
+        time:
+          type: integer
+          format: int32
+          example: 30
+        distance:
+          type: number
+          format: int32
+          example : 500
+      type: object
+    Order:
+      allOf:
+        - type: object
+          properties:
+            id:
+              type: integer
+              format: int64
+              example: 23
+        - $ref: '#/components/schemas/OrderIn'
+        
+        
+    RestaurantIn:
+      properties:
+        name:
+          type: string
+          example: "La zarzuela"
+        address:
+          type: string
+          example: "plaza Aragon n8"
+        capacity:
+          type: integer
+          format: int32
+          example: 50
+        operative:
+          type: boolean
+          example: true
+        mediumPrice:
+          type: number
+          format: double
+          example : 30.5
+        category:
+          type: string
+          example : "Asiatico"
+          
+      type: object
+    Restaurant:
+      allOf:
+        - type: object
+          properties:
+            id:
+              type: integer
+              format: int64
+              example: 23
+        - $ref: '#/components/schemas/RestaurantIn'
+ 
+    RiderIn:
+      properties:
+        startDate:
+          type: string
+          format: date
+          example: "2022-02-24"
+        endDate:
+          type: string
+          format: date
+          example: "2022-02-25"
+        kilometers:
+          type: number
+          format: int32
+          example: 150
+        user:
+          type: integer
+          format: int32
+          example: 2
+        bike:
+          type: integer
+          format: int32
+          example: 1
+      type: object
+    Rider:
+      allOf:
+        - type: object
+          properties:
+            id:
+              type: integer
+              format: int64
+              example: 23
+        - $ref: '#/components/schemas/RiderIn'       
+        
+        
+        
+    UserIn:
+      properties:
+        dni:
+          type: string
+          example: "94839042A"
+        name:
+          type: string
+          example: "Aitor"
+        surname:
+          type: string
+          example: "Sanchez"
+        birthDate:
+          type: string
+          format: date
+          example: "1998-02-01"
+        address:
+          type: string
+          example: "calle salomon 8-5c"
+      type: object
+    User:
+      allOf:
+        - type: object
+          properties:
+            id:
+              type: integer
+              format: int64
+              example: 23
+        - $ref: '#/components/schemas/UserIn'
+        
+        
+    ErrorResponse:
+      properties:
+        internalError:
+          type: number
+          format: int32
+        message:
+          type: string
+      type: object
+    ResourceNotFound:
+      allOf:
+        - type: object
+        - $ref: '#/components/schemas/ErrorResponse'
+    InternalServerError:
+      allOf:
+        - type: object
+        - $ref: '#/components/schemas/ErrorResponse'
+      example:
+        internalError: 999
+        message: "Internal Server Error"
