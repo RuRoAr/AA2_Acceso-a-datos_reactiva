@@ -15,12 +15,10 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:8080/restaurants",
-							"protocol": "http",
+							"raw": "{{URL}}/restaurants",
 							"host": [
-								"localhost"
+								"{{URL}}"
 							],
-							"port": "8080",
 							"path": [
 								"restaurants"
 							]
@@ -34,15 +32,13 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:8080/restaurant/2",
-							"protocol": "http",
+							"raw": "{{URL}}/restaurant/99",
 							"host": [
-								"localhost"
+								"{{URL}}"
 							],
-							"port": "8080",
 							"path": [
 								"restaurant",
-								"2"
+								"99"
 							]
 						}
 					},
@@ -54,12 +50,10 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:8080/restaurant?category=mexicano",
-							"protocol": "http",
+							"raw": "{{URL}}/restaurant?category=mexicano",
 							"host": [
-								"localhost"
+								"{{URL}}"
 							],
-							"port": "8080",
 							"path": [
 								"restaurant"
 							],
@@ -88,12 +82,10 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:8080/restaurants",
-							"protocol": "http",
+							"raw": "{{URL}}/restaurants",
 							"host": [
-								"localhost"
+								"{{URL}}"
 							],
-							"port": "8080",
 							"path": [
 								"restaurants"
 							]
@@ -116,12 +108,10 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:8080/restaurants",
-							"protocol": "http",
+							"raw": "{{URL}}/restaurants",
 							"host": [
-								"localhost"
+								"{{URL}}"
 							],
-							"port": "8080",
 							"path": [
 								"restaurants"
 							]
@@ -144,12 +134,10 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:8080/restaurant/2",
-							"protocol": "http",
+							"raw": "{{URL}}/restaurant/2",
 							"host": [
-								"localhost"
+								"{{URL}}"
 							],
-							"port": "8080",
 							"path": [
 								"restaurant",
 								"2"
@@ -164,12 +152,10 @@
 						"method": "DELETE",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:8080/restaurant/3",
-							"protocol": "http",
+							"raw": "{{URL}}/restaurant/3",
 							"host": [
-								"localhost"
+								"{{URL}}"
 							],
-							"port": "8080",
 							"path": [
 								"restaurant",
 								"3"
@@ -193,13 +179,12 @@
 							}
 						},
 						"url": {
-							"raw": "localhost:8080/order/1",
+							"raw": "{{URL}}/restaurant/1",
 							"host": [
-								"localhost"
+								"{{URL}}"
 							],
-							"port": "8080",
 							"path": [
-								"order",
+								"restaurant",
 								"1"
 							]
 						}
@@ -217,11 +202,10 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "localhost:8080/order/129",
+							"raw": "{{URL}}/order/129",
 							"host": [
-								"localhost"
+								"{{URL}}"
 							],
-							"port": "8080",
 							"path": [
 								"order",
 								"129"
@@ -236,11 +220,10 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "localhost:8080/order?distance=200",
+							"raw": "{{URL}}/order?distance=200",
 							"host": [
-								"localhost"
+								"{{URL}}"
 							],
-							"port": "8080",
 							"path": [
 								"order"
 							],
@@ -260,11 +243,10 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "localhost:8080/orders",
+							"raw": "{{URL}}/orders",
 							"host": [
-								"localhost"
+								"{{URL}}"
 							],
-							"port": "8080",
 							"path": [
 								"orders"
 							]
@@ -287,11 +269,10 @@
 							}
 						},
 						"url": {
-							"raw": "localhost:8080/orders",
+							"raw": "{{URL}}/orders",
 							"host": [
-								"localhost"
+								"{{URL}}"
 							],
-							"port": "8080",
 							"path": [
 								"orders"
 							]
@@ -314,11 +295,10 @@
 							}
 						},
 						"url": {
-							"raw": "localhost:8080/order/66",
+							"raw": "{{URL}}/order/66",
 							"host": [
-								"localhost"
+								"{{URL}}"
 							],
-							"port": "8080",
 							"path": [
 								"order",
 								"66"
@@ -342,11 +322,10 @@
 							}
 						},
 						"url": {
-							"raw": "localhost:8080/order/104",
+							"raw": "{{URL}}/order/104",
 							"host": [
-								"localhost"
+								"{{URL}}"
 							],
-							"port": "8080",
 							"path": [
 								"order",
 								"104"
@@ -370,11 +349,10 @@
 							}
 						},
 						"url": {
-							"raw": "localhost:8080/orders",
+							"raw": "{{URL}}/orders",
 							"host": [
-								"localhost"
+								"{{URL}}"
 							],
-							"port": "8080",
 							"path": [
 								"orders"
 							]
@@ -397,11 +375,10 @@
 							}
 						},
 						"url": {
-							"raw": "localhost:8080/orders",
+							"raw": "{{URL}}/orders",
 							"host": [
-								"localhost"
+								"{{URL}}"
 							],
-							"port": "8080",
 							"path": [
 								"orders"
 							]
@@ -424,11 +401,10 @@
 							}
 						},
 						"url": {
-							"raw": "localhost:8080/order/1",
+							"raw": "{{URL}}/order/1",
 							"host": [
-								"localhost"
+								"{{URL}}"
 							],
-							"port": "8080",
 							"path": [
 								"order",
 								"1"
@@ -448,11 +424,10 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "localhost:8080/rider/97",
+							"raw": "{{URL}}/rider/97",
 							"host": [
-								"localhost"
+								"{{URL}}"
 							],
-							"port": "8080",
 							"path": [
 								"rider",
 								"97"
@@ -467,11 +442,10 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "localhost:8080/rider?vehicle=bike",
+							"raw": "{{URL}}/rider?vehicle=bike",
 							"host": [
-								"localhost"
+								"{{URL}}"
 							],
-							"port": "8080",
 							"path": [
 								"rider"
 							],
@@ -491,11 +465,10 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "localhost:8080/riders",
+							"raw": "{{URL}}/riders",
 							"host": [
-								"localhost"
+								"{{URL}}"
 							],
-							"port": "8080",
 							"path": [
 								"riders"
 							]
@@ -509,11 +482,10 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "localhost:8080/user/97/numOrders",
+							"raw": "{{URL}}/user/97/numOrders",
 							"host": [
-								"localhost"
+								"{{URL}}"
 							],
-							"port": "8080",
 							"path": [
 								"user",
 								"97",
@@ -538,11 +510,10 @@
 							}
 						},
 						"url": {
-							"raw": "localhost:8080/riders",
+							"raw": "{{URL}}/riders",
 							"host": [
-								"localhost"
+								"{{URL}}"
 							],
-							"port": "8080",
 							"path": [
 								"riders"
 							]
@@ -565,11 +536,10 @@
 							}
 						},
 						"url": {
-							"raw": "localhost:8080/riders",
+							"raw": "{{URL}}/riders",
 							"host": [
-								"localhost"
+								"{{URL}}"
 							],
-							"port": "8080",
 							"path": [
 								"riders"
 							]
@@ -592,11 +562,10 @@
 							}
 						},
 						"url": {
-							"raw": "localhost:8080/rider/97",
+							"raw": "{{URL}}/rider/97",
 							"host": [
-								"localhost"
+								"{{URL}}"
 							],
-							"port": "8080",
 							"path": [
 								"rider",
 								"97"
@@ -620,11 +589,10 @@
 							}
 						},
 						"url": {
-							"raw": "localhost:8080/rider/161",
+							"raw": "{{URL}}/rider/161",
 							"host": [
-								"localhost"
+								"{{URL}}"
 							],
-							"port": "8080",
 							"path": [
 								"rider",
 								"161"
@@ -648,11 +616,10 @@
 							}
 						},
 						"url": {
-							"raw": "localhost:8080/rider/1",
+							"raw": "{{URL}}/rider/1",
 							"host": [
-								"localhost"
+								"{{URL}}"
 							],
-							"port": "8080",
 							"path": [
 								"rider",
 								"1"
@@ -679,12 +646,10 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:8080/rider/97/orders",
-							"protocol": "http",
+							"raw": "{{URL}}/rider/97/orders",
 							"host": [
-								"localhost"
+								"{{URL}}"
 							],
-							"port": "8080",
 							"path": [
 								"rider",
 								"97",
@@ -712,12 +677,10 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:8080/rider/97/orders?distance=200",
-							"protocol": "http",
+							"raw": "{{URL}}/rider/97/orders?distance=200",
 							"host": [
-								"localhost"
+								"{{URL}}"
 							],
-							"port": "8080",
 							"path": [
 								"rider",
 								"97",
@@ -744,11 +707,10 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "localhost:8080/user/1999",
+							"raw": "{{URL}}/user/1999",
 							"host": [
-								"localhost"
+								"{{URL}}"
 							],
-							"port": "8080",
 							"path": [
 								"user",
 								"1999"
@@ -763,11 +725,10 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "localhost:8080/user?surname=gomez",
+							"raw": "{{URL}}/user?surname=gomez",
 							"host": [
-								"localhost"
+								"{{URL}}"
 							],
-							"port": "8080",
 							"path": [
 								"user"
 							],
@@ -787,11 +748,10 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "localhost:8080/users",
+							"raw": "{{URL}}/users",
 							"host": [
-								"localhost"
+								"{{URL}}"
 							],
-							"port": "8080",
 							"path": [
 								"users"
 							]
@@ -814,11 +774,10 @@
 							}
 						},
 						"url": {
-							"raw": "localhost:8080/users",
+							"raw": "{{URL}}/users",
 							"host": [
-								"localhost"
+								"{{URL}}"
 							],
-							"port": "8080",
 							"path": [
 								"users"
 							]
@@ -841,11 +800,10 @@
 							}
 						},
 						"url": {
-							"raw": "localhost:8080/users",
+							"raw": "{{URL}}/users",
 							"host": [
-								"localhost"
+								"{{URL}}"
 							],
-							"port": "8080",
 							"path": [
 								"users"
 							]
@@ -868,11 +826,10 @@
 							}
 						},
 						"url": {
-							"raw": "localhost:8080/user/99",
+							"raw": "{{URL}}/user/99",
 							"host": [
-								"localhost"
+								"{{URL}}"
 							],
-							"port": "8080",
 							"path": [
 								"user",
 								"99"
@@ -896,11 +853,10 @@
 							}
 						},
 						"url": {
-							"raw": "localhost:8080/user/99",
+							"raw": "{{URL}}/user/99",
 							"host": [
-								"localhost"
+								"{{URL}}"
 							],
-							"port": "8080",
 							"path": [
 								"user",
 								"99"
@@ -924,11 +880,10 @@
 							}
 						},
 						"url": {
-							"raw": "localhost:8080/user/1",
+							"raw": "{{URL}}/user/1",
 							"host": [
-								"localhost"
+								"{{URL}}"
 							],
-							"port": "8080",
 							"path": [
 								"user",
 								"1"
