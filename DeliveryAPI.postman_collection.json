@@ -2,7 +2,8 @@
 	"info": {
 		"_postman_id": "cb559d0d-0848-416a-b75e-95f10bcfd9c9",
 		"name": "DeliveryAPI",
-		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "19115188"
 	},
 	"item": [
 		{
@@ -74,6 +75,34 @@
 				},
 				{
 					"name": "Add Restaurant",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \" tibett\",\r\n    \"address\": \"paseo\",\r\n    \"capacity\": 10,\r\n    \"operative\": true,\r\n    \"mediumPrice\": 50.0,\r\n    \"category\": \"india\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/restaurants",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"restaurants"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Add Restaurant Validate",
 					"request": {
 						"method": "POST",
 						"header": [],
@@ -333,7 +362,34 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"price\": 21,\r\n    \"weight\": 5.0,\r\n    \"ready\": true,\r\n    \"time\": 40,\r\n    \"distance\": 20,\r\n    \"restaurant\": 2,\r\n    \"user\": 1,\r\n    \"rider\": 97\r\n}",
+							"raw": "{\r\n    \"price\": 21,\r\n    \"weight\": 5.0,\r\n    \"ready\": true,\r\n    \"time\": 40,\r\n    \"distance\": 20,\r\n    \"restaurant\": 199,\r\n    \"user\": 1,\r\n    \"rider\": 97\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/orders",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"orders"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "A Order Dto new validation",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"price\": 21,\r\n    \"weight\": 5.0,\r\n    \"ready\": true,\r\n    \"time\": 0,\r\n    \"distance\": 20,\r\n    \"restaurant\": 2,\r\n    \"user\": 1,\r\n    \"rider\": 97\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -469,6 +525,33 @@
 				},
 				{
 					"name": "Add rider",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \r\n    \"dni\": \"72548966-P\",\r\n    \"name\": \"lidia\",\r\n    \"surname\": \"gomez\",\r\n    \"vehicle\": \"bike\",\r\n    \"maxSpeed\": 50\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/riders",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"riders"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Add rider Validate",
 					"request": {
 						"method": "POST",
 						"header": [],
@@ -656,19 +739,19 @@
 			"name": "User",
 			"item": [
 				{
-					"name": "A Rider by id",
+					"name": "A User by id",
 					"request": {
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "localhost:8080/user/1",
+							"raw": "localhost:8080/user/1999",
 							"host": [
 								"localhost"
 							],
 							"port": "8080",
 							"path": [
 								"user",
-								"1"
+								"1999"
 							]
 						}
 					},
@@ -723,7 +806,34 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "   {\r\n        \r\n        \"dni\": \"784563221-L\",\r\n        \"name\": \"alex\",\r\n        \"surname\": \"gomez\",\r\n        \"birthDate\": \"2000-02-01\",\r\n        \"address\": \"calle lorenzo\"\r\n    }",
+							"raw": "   {\r\n        \"dni\": \"78456322L\",\r\n        \"name\": \"alex\",\r\n        \"surname\": \"gomez\",\r\n        \"birthDate\": \"2000-02-01\",\r\n        \"address\": \"calle lorenzo\"\r\n    }\r\n    ",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/users",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"users"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Add user validate",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "   {\r\n        \r\n        \"dni\": \"78456322R\",\r\n        \"name\": \"alex\",\r\n        \"surname\": \"gomez\",\r\n        \"birthDate\": \"2000-02-01\",\r\n        \"address\": \"calle lorenzo\"\r\n    }",
 							"options": {
 								"raw": {
 									"language": "json"
