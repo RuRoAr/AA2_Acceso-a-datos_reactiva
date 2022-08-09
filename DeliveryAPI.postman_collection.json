@@ -102,6 +102,34 @@
 					"response": []
 				},
 				{
+					"name": "Add Restaurant Validate",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \" tibett\",\r\n    \"address\": \"paseo\",\r\n    \"capacity\": 10,\r\n    \"operative\": true,\r\n    \"mediumPrice\": 50.0,\r\n    \"category\": \"india\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/restaurants",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"restaurants"
+							]
+						}
+					},
+					"response": []
+				},
+				{
 					"name": "Modify Restaurant",
 					"request": {
 						"method": "PUT",
@@ -497,6 +525,33 @@
 				},
 				{
 					"name": "Add rider",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \r\n    \"dni\": \"72548966-P\",\r\n    \"name\": \"lidia\",\r\n    \"surname\": \"gomez\",\r\n    \"vehicle\": \"bike\",\r\n    \"maxSpeed\": 50\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/riders",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"riders"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Add rider Validate",
 					"request": {
 						"method": "POST",
 						"header": [],
