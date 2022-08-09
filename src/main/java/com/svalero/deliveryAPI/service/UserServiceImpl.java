@@ -1,18 +1,12 @@
 package com.svalero.deliveryAPI.service;
 
 
-import com.svalero.deliveryAPI.domain.Restaurant;
 import com.svalero.deliveryAPI.domain.User;
-import com.svalero.deliveryAPI.exception.RestaurantNotFoundException;
-import com.svalero.deliveryAPI.exception.RiderNotFoundException;
-import com.svalero.deliveryAPI.exception.UserNotFoundException;
 import com.svalero.deliveryAPI.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
-
-import java.util.List;
 
 @Service
 public class UserServiceImpl implements UserService{

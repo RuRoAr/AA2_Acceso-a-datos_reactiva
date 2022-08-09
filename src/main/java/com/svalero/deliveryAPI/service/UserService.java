@@ -1,11 +1,8 @@
 package com.svalero.deliveryAPI.service;
 
 import com.svalero.deliveryAPI.domain.User;
-import com.svalero.deliveryAPI.exception.UserNotFoundException;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
-
-import java.util.List;
 
 public interface UserService {
     Flux<User> findAll();

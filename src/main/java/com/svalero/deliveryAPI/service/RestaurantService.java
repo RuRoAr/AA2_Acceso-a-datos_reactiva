@@ -1,12 +1,8 @@
 package com.svalero.deliveryAPI.service;
 
 import com.svalero.deliveryAPI.domain.Restaurant;
-import com.svalero.deliveryAPI.exception.RestaurantNotFoundException;
-import lombok.Data;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
-
-import java.util.List;
 
 
 public interface RestaurantService {
