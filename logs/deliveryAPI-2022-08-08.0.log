@@ -1,0 +1,4 @@
+2022-08-08 09:37:36,281 WARN com.zaxxer.hikari.pool.HikariPool$HouseKeeper [HikariPool-1 housekeeper] HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=6d19h15m44s453ms526µs700ns).
+2022-08-08 11:59:02,054 INFO com.svalero.deliveryAPI.controller.RiderController [http-nio-8080-exec-7] Add rider 
+2022-08-08 11:59:02,094 INFO com.svalero.deliveryAPI.controller.RiderController [http-nio-8080-exec-7] End Add rider 
+2022-08-08 17:33:02,094 WARN com.zaxxer.hikari.pool.HikariPool$HouseKeeper [HikariPool-1 housekeeper] HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=3h25m50s98ms219µs300ns).
