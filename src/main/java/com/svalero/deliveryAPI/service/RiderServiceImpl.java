@@ -2,15 +2,11 @@ package com.svalero.deliveryAPI.service;
 
 
 import com.svalero.deliveryAPI.domain.Rider;
-import com.svalero.deliveryAPI.exception.OrderNotFoundException;
-import com.svalero.deliveryAPI.exception.RiderNotFoundException;
 import com.svalero.deliveryAPI.repository.RiderRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
-
-import java.util.List;
 
 @Service
 public class RiderServiceImpl implements RiderService{

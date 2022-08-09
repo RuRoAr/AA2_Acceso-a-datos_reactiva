@@ -2,8 +2,9 @@ package com.svalero.deliveryAPI.controller;
 
 import com.svalero.deliveryAPI.domain.Order;
 import com.svalero.deliveryAPI.domain.Rider;
+import com.svalero.deliveryAPI.exception.BadRequestException;
 import com.svalero.deliveryAPI.exception.ErrorResponse;
-import com.svalero.deliveryAPI.exception.OrderNotFoundException;
+import com.svalero.deliveryAPI.exception.InternalServerErrorException;
 import com.svalero.deliveryAPI.exception.RiderNotFoundException;
 import com.svalero.deliveryAPI.service.OrderService;
 import com.svalero.deliveryAPI.service.RiderService;
@@ -111,31 +112,34 @@ public class RiderController {
 //        logger.info("End numOrdersRider " + idRider);
 //        return ResponseEntity.ok(users);
 //    }
-    @ExceptionHandler(RiderNotFoundException.class)
-    public ResponseEntity<ErrorResponse> handleBikeNotFoundException(RiderNotFoundException bnfe) {
-        ErrorResponse errorResponse = ErrorResponse.generalError(101, bnfe.getMessage());
-        logger.error(bnfe.getMessage(), bnfe);
-        return new ResponseEntity<>(errorResponse, HttpStatus.NOT_FOUND);
-    }
-
-
-
-    @ExceptionHandler
-    public ResponseEntity<ErrorResponse> handleException(Exception exception) {
-        ErrorResponse errorResponse = ErrorResponse.generalError(999, "Internal server error");
-        logger.error(exception.getMessage(), exception);
-        return new ResponseEntity<>(errorResponse, HttpStatus.INTERNAL_SERVER_ERROR);
-    }
-
+    @ResponseStatus(HttpStatus.BAD_REQUEST)
     @ExceptionHandler(MethodArgumentNotValidException.class)
     public ResponseEntity<ErrorResponse> handleException(MethodArgumentNotValidException manve) {
+        logger.info("400: Argument not valid");
         Map<String, String> errors = new HashMap<>();
         manve.getBindingResult().getAllErrors().forEach(error -> {
             String fieldName = ((FieldError) error).getField();
             String message = error.getDefaultMessage();
             errors.put(fieldName, message);
         });
-
         return ResponseEntity.badRequest().body(ErrorResponse.validationError(errors));
+    }
+
+    @ExceptionHandler(BadRequestException.class)
+    public ResponseEntity<ErrorResponse> handleBadRequestException(BadRequestException bre) {
+        logger.info("400: Bad request");
+        return ResponseEntity.badRequest().body(ErrorResponse.badRequest(bre.getMessage()));
+    }
+
+    @ExceptionHandler(RiderNotFoundException.class)
+    public ResponseEntity<ErrorResponse> handleCountryNotFoundException(RiderNotFoundException cnfe) {
+        logger.info("404: Country not found");
+        return ResponseEntity.status(HttpStatus.NOT_FOUND).body(ErrorResponse.resourceNotFound(cnfe.getMessage()));
+    }
+
+    @ExceptionHandler(InternalServerErrorException.class)
+    public ResponseEntity<ErrorResponse> handleInternalServerErrorException(InternalServerErrorException isee) {
+        logger.info("500: Internal server error");
+        return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(ErrorResponse.internalServerError(isee.getMessage()));
     }
 }

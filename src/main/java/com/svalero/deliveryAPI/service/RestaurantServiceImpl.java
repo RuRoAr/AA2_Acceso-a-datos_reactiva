@@ -1,17 +1,12 @@
 package com.svalero.deliveryAPI.service;
 
 
-import com.svalero.deliveryAPI.domain.Order;
 import com.svalero.deliveryAPI.domain.Restaurant;
-import com.svalero.deliveryAPI.exception.OrderNotFoundException;
-import com.svalero.deliveryAPI.exception.RestaurantNotFoundException;
 import com.svalero.deliveryAPI.repository.RestaurantRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
-
-import java.util.List;
 
 @Service
 public class RestaurantServiceImpl implements RestaurantService{

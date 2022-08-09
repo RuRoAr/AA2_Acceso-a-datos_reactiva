@@ -5,10 +5,6 @@ import com.svalero.deliveryAPI.domain.Restaurant;
 import com.svalero.deliveryAPI.domain.Rider;
 import com.svalero.deliveryAPI.domain.User;
 import com.svalero.deliveryAPI.domain.dto.OrderDto;
-import com.svalero.deliveryAPI.exception.OrderNotFoundException;
-import com.svalero.deliveryAPI.exception.RestaurantNotFoundException;
-import com.svalero.deliveryAPI.exception.RiderNotFoundException;
-import com.svalero.deliveryAPI.exception.UserNotFoundException;
 import com.svalero.deliveryAPI.repository.OrderRepository;
 import com.svalero.deliveryAPI.repository.RestaurantRepository;
 import com.svalero.deliveryAPI.repository.RiderRepository;
@@ -18,9 +14,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
-
-import java.lang.module.ResolutionException;
-import java.util.List;
 
 @Service
 public class OrderServiceImpl implements OrderService{
