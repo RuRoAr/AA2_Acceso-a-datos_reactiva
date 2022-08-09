@@ -1,12 +1,9 @@
 package com.svalero.deliveryAPI.exception;
 
 public class UserNotFoundException extends Exception{
-    private static String DEFAULT_ERROR_MESSAGE = "Usuario not found";
+    private static final String DEFAULT_ERROR_MESSAGE = "User not found";
 
-    public UserNotFoundException(String message){
-        super(message);
-    }
-    public UserNotFoundException(){//por si no me aptece pasar mensaje
+    public UserNotFoundException() {
         super(DEFAULT_ERROR_MESSAGE);
     }
 }

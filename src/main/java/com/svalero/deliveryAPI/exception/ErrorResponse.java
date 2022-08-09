@@ -7,32 +7,40 @@ import lombok.Data;
 import java.util.HashMap;
 import java.util.Map;
 
-import static com.svalero.deliveryAPI.exception.Constants.MANDATORY_FIELD_ERROR_CODE;
+
 
 @Data
 
 public class ErrorResponse {
 
-    private int code;
+    private int internalError;
     private String message;
     private Map<String, String> errors;
 
-    private ErrorResponse(int errorCode, String errorMessage) {
-        code = errorCode;
-        message = errorMessage;
+    private ErrorResponse(int internalError, String message) {
+        this.internalError = internalError;
+        this.message = message;
         errors = new HashMap<>();
     }
 
-    private ErrorResponse(int code, String message, Map<String, String> errors) {
-        this.code = code;
+    private ErrorResponse(int internalError, String message, Map<String, String> errors) {
+        this.internalError = internalError;
         this.message = message;
         this.errors = errors;
     }
 
-    public static ErrorResponse generalError(int code, String message) {
-        return new ErrorResponse(code, message);
+    public static ErrorResponse validationError(Map<String, String> errors) {
+        return new ErrorResponse(400, "Validation error", errors);
     }
 
-    public static ErrorResponse validationError(Map<String, String> errors) {
-        return new ErrorResponse(104, "Validation error", errors);
+    public static ErrorResponse badRequest(String message) {
+        return new ErrorResponse(400, message);
+    }
+
+    public static ErrorResponse resourceNotFound(String message) {
+        return new ErrorResponse(404, message);
+    }
+
+    public static ErrorResponse internalServerError(String message) {
+        return new ErrorResponse(500, message);
     }}
