@@ -39,7 +39,7 @@ public class User {
     private String address;
 
 
-    @OneToMany(mappedBy = "user")
+    @OneToMany(mappedBy = "user",fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private List<Order> orders;
 
 }
