@@ -42,7 +42,7 @@ public class Restaurant {
     @NotEmpty
     private String category;
 
-    @OneToMany(mappedBy = "restaurant")
+    @OneToMany(mappedBy = "restaurant",fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private List<Order> orders;
 
 }
