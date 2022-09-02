@@ -36,7 +36,7 @@ public class Order {
     @PositiveOrZero
     private int distance;
 
-    @OneToMany(mappedBy = "rider",fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JoinColumn(name = "rider_id")
     @JsonBackReference(value = "rider-order")//esto tambien hace que no
     // haga un bucle y por eso no devuleve en postman
